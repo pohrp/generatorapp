@@ -1,15 +1,13 @@
-
-
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 // Name, Number, Color, Password, and Joke Generators Component
 const Generators: React.FC = () => {
-  const [name, setName] = useState<string>("");
+  const [name, setName] = useState<string>('');
   const [numbers, setNumbers] = useState<number[]>([]);
-  const [password, setPassword] = useState<string>("");
-  const [joke, setJoke] = useState<string>("");
-  const [bgColor, setBgColor] = useState<string>("white");
-  const [visibleGenerator, setVisibleGenerator] = useState<string>("");
+  const [password, setPassword] = useState<string>('');
+  const [joke, setJoke] = useState<string>('');
+  const [bgColor, setBgColor] = useState<string>('white');
+  const [visibleGenerator, setVisibleGenerator] = useState<string>('');
 
   // Function to toggle between generators
   const showGenerator = (type: string) => {
@@ -18,8 +16,22 @@ const Generators: React.FC = () => {
 
   // Function to generate a random name
   const generateName = () => {
-    const firstNames: string[] = ["John", "Emma", "James", "Sophia", "Michael", "Olivia"];
-    const lastNames: string[] = ["Smith", "Johnson", "Brown", "Williams", "Jones", "Miller"];
+    const firstNames: string[] = [
+      'John',
+      'Emma',
+      'James',
+      'Sophia',
+      'Michael',
+      'Olivia',
+    ];
+    const lastNames: string[] = [
+      'Smith',
+      'Johnson',
+      'Brown',
+      'Williams',
+      'Jones',
+      'Miller',
+    ];
 
     const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
     const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
@@ -31,7 +43,7 @@ const Generators: React.FC = () => {
   const generateNumbers = () => {
     const generatedNumbers: number[] = [];
     while (generatedNumbers.length < 6) {
-      let randomNum = Math.floor(Math.random() * 49) + 1;
+      const randomNum = Math.floor(Math.random() * 49) + 1;
       if (!generatedNumbers.includes(randomNum)) {
         generatedNumbers.push(randomNum);
       }
@@ -47,14 +59,15 @@ const Generators: React.FC = () => {
 
   // Function to reset the website color
   const resetColor = () => {
-    setBgColor("white");
+    setBgColor('white');
   };
 
   // Function to generate a strong password
   const generatePassword = () => {
     const length: number = 12;
-    const charset: string = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_+=<>?";
-    let generatedPassword: string = "";
+    const charset: string =
+      'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_+=<>?';
+    let generatedPassword: string = '';
 
     for (let i = 0; i < length; i++) {
       const randomIndex: number = Math.floor(Math.random() * charset.length);
@@ -67,24 +80,28 @@ const Generators: React.FC = () => {
   // Function to fetch a random joke from an API
   const generateJoke = async () => {
     try {
-      const response = await fetch("https://official-joke-api.appspot.com/random_joke");
+      const response = await fetch(
+        'https://official-joke-api.appspot.com/random_joke'
+      );
       const data = await response.json();
       setJoke(`${data.setup} - ${data.punchline}`);
-    } catch (error) {
+    } catch {
       setJoke("Oops! Couldn't fetch a joke. Try again!");
     }
   };
 
   return (
-    <div style={{ backgroundColor: bgColor, padding: "20px" }}>
+    <div style={{ backgroundColor: bgColor, padding: '20px' }}>
       <h1>Generators</h1>
-      <button onClick={() => showGenerator("name")}>Name Generator</button>
-      <button onClick={() => showGenerator("number")}>Number Generator</button>
-      <button onClick={() => showGenerator("color")}>Color Generator</button>
-      <button onClick={() => showGenerator("password")}>Password Generator</button>
-      <button onClick={() => showGenerator("joke")}>Joke Generator</button>
+      <button onClick={() => showGenerator('name')}>Name Generator</button>
+      <button onClick={() => showGenerator('number')}>Number Generator</button>
+      <button onClick={() => showGenerator('color')}>Color Generator</button>
+      <button onClick={() => showGenerator('password')}>
+        Password Generator
+      </button>
+      <button onClick={() => showGenerator('joke')}>Joke Generator</button>
 
-      {visibleGenerator === "name" && (
+      {visibleGenerator === 'name' && (
         <div>
           <h2>Name Generator</h2>
           <button onClick={generateName}>Generate Name</button>
@@ -92,15 +109,15 @@ const Generators: React.FC = () => {
         </div>
       )}
 
-      {visibleGenerator === "number" && (
+      {visibleGenerator === 'number' && (
         <div>
           <h2>Number Generator</h2>
           <button onClick={generateNumbers}>Generate Numbers</button>
-          <p>Generated Numbers: {numbers.join(", ")}</p>
+          <p>Generated Numbers: {numbers.join(', ')}</p>
         </div>
       )}
 
-      {visibleGenerator === "color" && (
+      {visibleGenerator === 'color' && (
         <div>
           <h2>Color Generator</h2>
           <button onClick={generateColor}>Generate Color</button>
@@ -108,7 +125,7 @@ const Generators: React.FC = () => {
         </div>
       )}
 
-      {visibleGenerator === "password" && (
+      {visibleGenerator === 'password' && (
         <div>
           <h2>Password Generator</h2>
           <button onClick={generatePassword}>Generate Password</button>
@@ -116,7 +133,7 @@ const Generators: React.FC = () => {
         </div>
       )}
 
-      {visibleGenerator === "joke" && (
+      {visibleGenerator === 'joke' && (
         <div>
           <h2>Joke Generator</h2>
           <button onClick={generateJoke}>Generate Joke</button>
@@ -128,4 +145,3 @@ const Generators: React.FC = () => {
 };
 
 export default Generators;
-
