@@ -1,13 +1,146 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generator App</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <style>
+      /* General Styles */
+      body {
+          font-family: Arial, sans-serif;
+          text-align: center;
+          margin: 0;
+          padding: 0;
+          background-color: #f5f5f5;
+          transition: background 0.5s, color 0.5s; /* Smooth transition */
+      }
+
+      /* Navbar */
+      nav {
+          background-color: #333;
+          padding: 10px;
+      }
+
+      nav ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          justify-content: center;
+      }
+
+      nav ul li {
+          margin: 0 15px;
+      }
+
+      nav ul li a {
+          text-decoration: none;
+          color: white;
+          font-size: 18px;
+          padding: 8px 12px;
+          border-radius: 5px;
+          transition: background 0.3s;
+      }
+
+      nav ul li a:hover {
+          background: #555;
+      }
+
+      /* Main Container */
+      .container {
+          margin-top: 50px;
+      }
+
+      /* Generator Sections */
+      .generator {
+          display: block;
+          background: white;
+          padding: 40px;
+          margin: 20px auto;
+          width: 400px;
+          border-radius: 15px;
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+      }
+
+      button {
+          padding: 10px 15px;
+          font-size: 16px;
+          margin-top: 10px;
+          cursor: pointer;
+          background: #007bff;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          transition: background 0.3s;
+      }
+
+      button:hover {
+          background: #0056b3;
+      }
+
+      p {
+          font-size: 18px;
+          margin-top: 10px;
+      }
+
+      /* Hide Unselected Generator */
+      .hidden {
+          display: none;
+      }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="#" onclick="showGenerator('name')">Name Generator</a></li>
+            <li><a href="#" onclick="showGenerator('number')">Number Generator</a></li>
+            <li><a href="#" onclick="showGenerator('color')">Color Generator</a></li>
+            <li><a href="#" onclick="showGenerator('password')">Password Generator</a></li>
+            <li><a href="#" onclick="showGenerator('joke')">Joke Generator</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Name Generator -->
+        <div id="name-generator" class="generator">
+            <h2>Random Name Generator</h2>
+            <button onclick="generateName()">Generate Name</button>
+            <p id="name-result">Click the button to generate a name</p>
+        </div>
+
+        <!-- Number Generator -->
+        <div id="number-generator" class="generator hidden">
+            <h2>Random Number Generator</h2>
+            <button onclick="generateNumbers()">Generate Numbers</button>
+            <p id="number-result">Click the button to generate numbers</p>
+        </div>
+
+        <!-- Color Generator -->
+        <div id="color-generator" class="generator hidden">
+            <h2>Random Color Generator</h2>
+            <button onclick="generateColor()">Generate Color</button>
+            <button onclick="resetColor()">Reset</button>
+        </div>
+
+        <!-- Password Generator -->
+        <div id="password-generator" class="generator hidden">
+            <h2>Random Password Generator</h2>
+            <button onclick="generatePassword()">Generate Password</button>
+            <p id="password-result">Click the button to generate a password</p>
+        </div>
+
+        <!-- Random Joke Generator -->
+        <div id="joke-generator" class="generator hidden">
+            <h2>Random Joke Generator</h2>
+            <button onclick="generateJoke()">Get a Joke</button>
+            <p id="joke-result">Click the button to get a joke</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
 </html>
