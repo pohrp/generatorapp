@@ -4,102 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generator App</title>
-    <style>
-      /* General Styles */
-      body {
-          font-family: Arial, sans-serif;
-          text-align: center;
-          margin: 0;
-          padding: 0;
-          background-color: #f5f5f5;
-          transition: background 0.5s, color 0.5s; /* Smooth transition */
-      }
-
-      /* Navbar */
-      nav {
-          background-color: #333;
-          padding: 10px;
-      }
-
-      nav ul {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-          display: flex;
-          justify-content: center;
-      }
-
-      nav ul li {
-          margin: 0 15px;
-      }
-
-      nav ul li a {
-          text-decoration: none;
-          color: white;
-          font-size: 18px;
-          padding: 8px 12px;
-          border-radius: 5px;
-          transition: background 0.3s;
-      }
-
-      nav ul li a:hover {
-          background: #555;
-      }
-
-      /* Main Container */
-      .container {
-          margin-top: 50px;
-      }
-
-      /* Generator Sections */
-      .generator {
-          display: block;
-          background: white;
-          padding: 40px;
-          margin: 20px auto;
-          width: 400px;
-          border-radius: 15px;
-          box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
-      }
-
-      button {
-          padding: 10px 15px;
-          font-size: 16px;
-          margin-top: 10px;
-          cursor: pointer;
-          background: #007bff;
-          color: white;
-          border: none;
-          border-radius: 5px;
-          transition: background 0.3s;
-      }
-
-      button:hover {
-          background: #0056b3;
-      }
-
-      p {
-          font-size: 18px;
-          margin-top: 10px;
-      }
-
-      /* Hide Unselected Generator */
-      .hidden {
-          display: none;
-      }
-
-    </style>
+    <link rel="stylesheet" src="/src/index.css" type="module">
+  <script type="module" crossorigin src="/generatorapp/assets/index-uPL0FYeV.js"></script>
 </head>
 <body>
-
-    <!-- Navigation Bar -->
     <nav>
         <ul>
-            <li><a href="#" onclick="showGenerator('name')">Name Generator</a></li>
-            <li><a href="#" onclick="showGenerator('number')">Number Generator</a></li>
-            <li><a href="#" onclick="showGenerator('color')">Color Generator</a></li>
-            <li><a href="#" onclick="showGenerator('password')">Password Generator</a></li>
-            <li><a href="#" onclick="showGenerator('joke')">Joke Generator</a></li>
+            <li><a href="#" onclick='showGenerator("name")'>Name Generator</a></li>
+            <li><a href="#" onclick='showGenerator("number")'>Number Generator</a></li>
+            <li><a href="#" onclick='showGenerator("color")'>Color Generator</a></li>
+            <li><a href="#" onclick='showGenerator("password")'>Password Generator</a></li>
+            <li><a href="#" onclick='showGenerator("joke")'>Joke Generator</a></li>
         </ul>
     </nav>
 
@@ -140,79 +55,6 @@
         </div>
     </div>
 
-    <script>
-      // Function to toggle between generators
-      function showGenerator(type) {
-          document.getElementById('name-generator').classList.add('hidden');
-          document.getElementById('number-generator').classList.add('hidden');
-          document.getElementById('color-generator').classList.add('hidden');
-          document.getElementById('password-generator').classList.add('hidden');
-          document.getElementById('joke-generator').classList.add('hidden');
-
-          document.getElementById(`${type}-generator`).classList.remove('hidden');
-      }
-
-      // Function to generate a random name
-      function generateName() {
-          const firstNames = ["John", "Emma", "James", "Sophia", "Michael", "Olivia"];
-          const lastNames = ["Smith", "Johnson", "Brown", "Williams", "Jones", "Miller"];
-
-          let firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
-          let lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
-
-          document.getElementById("name-result").textContent = `Generated Name: ${firstName} ${lastName}`;
-      }
-
-      // Function to generate six random numbers between 1 and 99
-      function generateNumbers() {
-          let numbers = [];
-          while (numbers.length < 6) {
-              let randomNum = Math.floor(Math.random() * 49) + 1;
-              if (!numbers.includes(randomNum)) {
-                  numbers.push(randomNum);
-              }
-          }
-
-          document.getElementById("number-result").textContent = `Generated Numbers: ${numbers.join(', ')}`;
-      }
-
-      // Function to generate a random color
-      function generateColor() {
-          let randomBgColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-          document.body.style.backgroundColor = randomBgColor;
-      }
-
-      // Function to reset the website color
-      function resetColor() {
-          document.body.style.backgroundColor = "White";
-      }
-
-      // Function to generate a strong password
-      function generatePassword() {
-          const length = 12;
-          const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_+=<>?";
-          let password = "";
-
-          for (let i = 0; i < length; i++) {
-              let randomIndex = Math.floor(Math.random() * charset.length);
-              password += charset[randomIndex];
-          }
-
-          document.getElementById("password-result").textContent = `Generated Password: ${password}`;
-      }
-
-      // Function to fetch a random joke from an API
-      async function generateJoke() {
-          try {
-              let response = await fetch('https://official-joke-api.appspot.com/random_joke');
-              let data = await response.json();
-              document.getElementById("joke-result").textContent = `${data.setup} - ${data.punchline}`;
-          } catch (error) {
-              document.getElementById("joke-result").textContent = "Oops! Couldn't fetch a joke. Try again!";
-          }
-      }
-
-    </script>
 
 </body>
 </html>
