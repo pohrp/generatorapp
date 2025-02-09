@@ -6,6 +6,7 @@ import tseslint from 'typescript-eslint'
 import React from 'react'
 import eslintPluginPrettier from 'eslint-plugin-prettier'
 
+
 export default tseslint.config(
   { ignores: ['dist', 'eslint.config.js', 'vite.config.ts'] },
   {
