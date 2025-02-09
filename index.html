@@ -4,17 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generator App</title>
-    <link rel="stylesheet" src="/src/index.css" type="module">
-  <script type="module" crossorigin src="/generatorapp/assets/index-uPL0FYeV.js"></script>
+  <script type="module" crossorigin src="/generatorapp/assets/index-DpOScxOA.js"></script>
+  <link rel="stylesheet" crossorigin href="/generatorapp/assets/index-DJaRqWly.css">
 </head>
 <body>
     <nav>
         <ul>
-            <li><a href="#" onclick='showGenerator("name")'>Name Generator</a></li>
-            <li><a href="#" onclick='showGenerator("number")'>Number Generator</a></li>
-            <li><a href="#" onclick='showGenerator("color")'>Color Generator</a></li>
-            <li><a href="#" onclick='showGenerator("password")'>Password Generator</a></li>
-            <li><a href="#" onclick='showGenerator("joke")'>Joke Generator</a></li>
+            <li><a href="#" data-type="name">Name Generator</a></li>
+            <li><a href="#" data-type="number">Number Generator</a></li>
+            <li><a href="#" data-type="color">Color Generator</a></li>
+            <li><a href="#" data-type="password">Password Generator</a></li>
         </ul>
     </nav>
 
@@ -22,39 +21,31 @@
         <!-- Name Generator -->
         <div id="name-generator" class="generator">
             <h2>Random Name Generator</h2>
-            <button onclick="generateName()">Generate Name</button>
+            <button id="generate-name-btn">Generate Name</button>
             <p id="name-result">Click the button to generate a name</p>
         </div>
 
         <!-- Number Generator -->
         <div id="number-generator" class="generator hidden">
             <h2>Random Number Generator</h2>
-            <button onclick="generateNumbers()">Generate Numbers</button>
+            <button id="generate-number-btn">Generate Numbers</button>
             <p id="number-result">Click the button to generate numbers</p>
         </div>
 
         <!-- Color Generator -->
         <div id="color-generator" class="generator hidden">
             <h2>Random Color Generator</h2>
-            <button onclick="generateColor()">Generate Color</button>
-            <button onclick="resetColor()">Reset</button>
+            <button id="generate-color-btn">Generate Color</button>
+            <button id="reset-color-btn">Reset</button>
         </div>
 
         <!-- Password Generator -->
         <div id="password-generator" class="generator hidden">
             <h2>Random Password Generator</h2>
-            <button onclick="generatePassword()">Generate Password</button>
+            <button id="generate-password-btn">Generate Password</button>
             <p id="password-result">Click the button to generate a password</p>
         </div>
-
-        <!-- Random Joke Generator -->
-        <div id="joke-generator" class="generator hidden">
-            <h2>Random Joke Generator</h2>
-            <button onclick="generateJoke()">Get a Joke</button>
-            <p id="joke-result">Click the button to get a joke</p>
-        </div>
     </div>
-
 
 </body>
 </html>
