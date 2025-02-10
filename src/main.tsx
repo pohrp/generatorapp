@@ -1,9 +1,7 @@
 // ✅ Exportable functions for testing & HTML usage
 export const generateName = (): string => {
   const firstNames = ['John', 'Emma', 'James', 'Sophia', 'Michael', 'Olivia', 'anthony'];
-  const lastNames = [
-    'tan', 'goh', 'sim'
-  ];
+  const lastNames = ['tan', 'goh', 'sim'];
   return `Generated Name: ${firstNames[Math.floor(Math.random() * firstNames.length)]} ${lastNames[Math.floor(Math.random() * lastNames.length)]}`;
 };
 
